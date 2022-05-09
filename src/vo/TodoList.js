@@ -8,10 +8,40 @@ class TodoList {
   _items = [];
   _date = "";
 
-  constructor() {
+  constructor(items, date) {
     makeObservable(this, {
       _items: observable,
     });
+    this._items = items;
+    this._date = date;
+  }
+
+  get items() {
+    return this._items;
+  }
+
+  get equalDayItems() {
+    return this._items.filter(item => item.equalsDayOfCreatedAt(this._date));
+  }
+
+  get notEqualDayItems() {
+    return this._items.filter(item => !item.equalsDayOfCreatedAt(this._date));
+  }
+
+  pushTodoItem = (item) => {
+    this._items.push(item);
+  }
+
+  removeTodoItem = (id) => {
+    this._items = this._items.filter(item => item.id !== id);
+  }
+
+  get equalsDayAndCompletedItems() {
+    return this.equalDayItems.filter(item => item.completed);
+  }
+
+  get equalsDayAndNotCompletedItems() {
+    return this.equalDayItems.filter(item => !item.completed);
   }
 }
 
