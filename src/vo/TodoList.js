@@ -29,7 +29,13 @@ class TodoList {
   }
 
   pushTodoItem = (item) => {
-    this._items.push(item);
+    if (this._items.filter(i => i.id === item.id).length === 0) {
+      // 기존에 해당하는 ID가 없으면 추가합니다.
+      this._items.push(item);
+    } else {
+      // 기존에 해당하는 ID가 있으면 수정합니다.
+      this._items = [...this._items.filter(i => i.id !== item.id), item];
+    }
   }
 
   removeTodoItem = (id) => {
