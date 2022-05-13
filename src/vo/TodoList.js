@@ -15,16 +15,16 @@ class TodoList {
     this._items = items;
     this._date = date;
   }
-
+  
   get items() {
     return this._items;
   }
 
-  get equalDayItems() {
+  get equalsDayItems() {
     return this._items.filter(item => item.equalsDayOfCreatedAt(this._date));
   }
 
-  get notEqualDayItems() {
+  get notEqualsDayItems() {
     return this._items.filter(item => !item.equalsDayOfCreatedAt(this._date));
   }
 
@@ -43,11 +43,11 @@ class TodoList {
   }
 
   get equalsDayAndCompletedItems() {
-    return this.equalDayItems.filter(item => item.completed);
+    return this.equalsDayItems.filter((item) => item.completed);
   }
 
   get equalsDayAndNotCompletedItems() {
-    return this.equalDayItems.filter(item => !item.completed);
+    return this.equalsDayItems.filter((item) => !item.completed);
   }
 }
 
