@@ -57,8 +57,8 @@ describe("생성한 할 일들 중에서 오늘 할 일, 지난 할 일 구분�
   test("5개의 할 일이 있는데, id 2번만 지난 한 일이다.", () => {
     jest.spyOn(todoItem2, "equalsDayOfCreatedAt")
       .mockImplementation(() => false);
-    expect(todoList.equalDayItems).toHaveLength(4);
-    expect(todoList.equalDayItems.some((todoItem) => todoItem.id === 2)).toBeFalsy();
+    expect(todoList.equalsDayItems).toHaveLength(4);
+    expect(todoList.equalsDayItems.some((todoItem) => todoItem.id === 2)).toBeFalsy();
   });
 });
 
