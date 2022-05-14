@@ -49,6 +49,14 @@ class TodoList {
   get equalsDayAndNotCompletedItems() {
     return this.equalsDayItems.filter((item) => !item.completed);
   }
+
+  get notEqualsDayAndCompletedItems() {
+    return this.notEqualsDayItems.filter(item => item.completed);
+  }
+
+  get notEqualsDayAndNotCompletedItems() {
+    return this.notEqualsDayItems.filter(item => !item.completed);
+  }
 }
 
 export default TodoList;
